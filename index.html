@@ -1,8 +1,9 @@
 <!Doctype html>
 <html>
 	<head>
-	<!-- Arizonia -->
-		<link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -11,14 +12,100 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 		
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<style>
+		  <style type="text/css" rel="stylesheet">
+			body {
+				font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+			}
+			.center {
+				
+				position: absolute;
+				top: 50%;
+				left: 50%;
 		
+			}
+			#left {
+				
+				margin-left: -400px;
+			}
+			
+			#right {
+				margin-left: 350px;
+			}
+			
+			.fa {
+				font-size: 40px;
+				color: #696969;
+			}
+			
+			.fa:hover {
+				opacity: 0.2;
+			}
+			.hide {
+				display: none;
+			
+			}
+			
+			#message {
+				margin: 0;
+				position: absolute;
+				top: 52%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: 50px;
+				color: #ffd700;
+				
+				opacity: 0;
+			}
+			
+			#birthday {
+				opacity: 0;
+				position:absolute;
+				top: 51%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				margin-top: 440px;
+			}
+			
+			.c {
+				margin: 0;
+				position: absolute;
+				top: 51%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			
+			.b {
+				margin: 0;
+				position: absolute;
+				top: 51%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+
+			}
 		</style>
 	</head>
 	<body>
-		<div class="text-center">
-		<canvas id="canvas" width="600" height="800"></canvas>
+		
+		<div id="left" class="text-center center">
+			<p style="margin-right: 300px; width: 50px;">
+				<i class="fa fa-arrow-circle-o-left" aria-hidden="true" onclick="swap()"></i>
+			</p>
 		</div>
+		<div id="right" class="text-center center">
+			<p style="margin-right: 300px; width: 50px;">
+				<i class="fa fa-arrow-circle-o-right" aria-hidden="true" onclick="swap()"></i>
+			</p>
+		</div>
+		<div class="text-center">
+			<canvas class="c" id="bCanvas" width="600" height="800" style="margin-bottom: 10px;"></canvas>
+			<div id="birthday">
+				<p>Happy Birthday, Elle!<br>Love, Johnny<br>12-27-2017</p>
+			</div>
+		</div>
+		<div class="text-center">
+			<p id="message">Merry Christmas, <br> Elle!</p>
+		</div>
+		<script type="text/javascript" src="bamboo.js"></script>
 		<script type="text/javascript" src="bigc.js"></script>
 	</body>
 </html>

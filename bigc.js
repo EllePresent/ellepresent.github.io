@@ -1,10 +1,7 @@
-canvas = document.getElementById("canvas");
-ctx = canvas.getContext("2d");
 //generates bamboo image
 var b = new Image();
 b.src = "bigc.jpg";
 stars = [];
-var l = [];
 function star(x,y, r, a, speed) {
 	this.x = x;
 	this.y = y;
@@ -25,9 +22,6 @@ function star(x,y, r, a, speed) {
 	}
 }
 b.onload = function(){
-    ctx.drawImage(b,0,0, canvas.width, canvas.height); 
-	linear(100);
-	console.log(l);
 	//orion
 	stars.push(new star(50, 50, 2, 1, 1));
 	stars.push(new star(80, 40, 2, 0.35, 1.5));
@@ -41,27 +35,22 @@ b.onload = function(){
 	stars.push(new star(190, 65, 2, 0.1, 1.25));
 	stars.push(new star(210, 45, 2, 0.42, 2));
 	stars.push(new star(250, 30, 2, 0.9, 1));
-	update();
-	
 }
 
 function update() {
+	//if star image
+	if (!visible) {
+		requestAnimationFrame(update);
+	} else  {
+		return;
+	}
 	ctx.clearRect(0,0, canvas.width, canvas.height);
-	ctx.drawImage(b,0,0, canvas.width, canvas.height);  
-	requestAnimationFrame(update);
+	ctx.drawImage(b,0,0, canvas.width, canvas.height);
+	//update star twinkle
 	for (s of stars) {
 		s.draw();
 		s.a = Math.abs(Math.cos(s.state * Math.PI / 200));
 		s.state += s.speed;
 		s.draw();
-	}
-}
-
-function linear(width) {
-	for (var i = 0; i < width; i++) {
-		l.push(i);
-	}
-	for(var i = width; i>0; i--) {
-		l.push(i);
 	}
 }

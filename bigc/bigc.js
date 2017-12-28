@@ -47,7 +47,8 @@ b.onload = function(){
 
 function update() {
 	ctx.clearRect(0,0, canvas.width, canvas.height);
-	ctx.drawImage(b,0,0, canvas.width, canvas.height);  
+	ctx.drawImage(b,0,0, canvas.width, canvas.height);
+	ctx.fill();	
 	requestAnimationFrame(update);
 	for (s of stars) {
 		s.draw();
