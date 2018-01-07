@@ -15,10 +15,11 @@
 		  <style type="text/css" rel="stylesheet">
 			body {
 				font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+				background-color: black;
 			}
 			.center {
 				position: absolute;
-				top: 50%;
+				top: 57%;
 				left: 50%;
 			}
 			#left {
@@ -59,7 +60,7 @@
 				top: 60%;
 				left: 50%;
 				transform: translate(-50%, -50%);
-				margin-top: 440px;
+				margin-top: 480px;
 			}
 			
 			.c {
@@ -78,6 +79,23 @@
 				transform: translate(-50%, -50%);
 
 			}
+			
+			.frame{
+				border-color: #2B1E16;
+				border-width: 25px;
+				border-style: solid;
+				padding: 15px;
+				-moz-box-shadow:    inset 0 0 20px #000000;
+				-webkit-box-shadow: inset 0 0 20px #000000;
+				box-shadow:         inset 0 0 20px #000000;
+				
+			}
+			
+			.innerFrame {
+				background-color: #C0C0C0;
+				
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -93,15 +111,14 @@
 			</p>
 		</div>
 		<div class="text-center">
-			<canvas class="c" id="bCanvas" width="600" height="800" style="margin-bottom: 10px;"></canvas>
+			<canvas class="c frame innerFrame" id="bCanvas" width="600" height="800" style="margin-bottom: 10px;"></canvas>
 			<div id="birthday">
 				<p>Happy Birthday, Elle!<br>Love, Johnny<br>12-27-2017</p>
 			</div>
 		</div>
-		<div class="text-center">
-			<p id="message">Merry Christmas, <br> Elle!</p>
-		</div>
+		
 		<script type="text/javascript" src="bamboo.js"></script>
 		<script type="text/javascript" src="bigc.js"></script>
+		
 	</body>
 </html>

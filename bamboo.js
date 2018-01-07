@@ -8,9 +8,14 @@ var paths = [];
 var done = false;
 var visible = true;
 //performs action when image is loaded in
+var audio = new Audio('sky.mp3'); 
+audio.loop = true;
+function playAudio() { 
+    audio.play(); 
+} 
+
 bam.onload = function(){
     ctx.drawImage(bam,0,0, canvas.width, canvas.height);  
-	
 	//create all paths for drawing
 	var a1 = calcWaypoints({x:444, y: 193}, {x: 468, y: 189});
 	var a2 = calcWaypoints({x:456, y: 191}, {x: 460, y: 210});
@@ -24,6 +29,8 @@ bam.onload = function(){
 	paths = [a1, a2, a3, a4, a5, a6,a7, a8, a9];
 	points = paths[0];
 	animate();
+	swap();
+	//playAudio();
 }
 
 //calculates waypoints between vertices
@@ -69,8 +76,6 @@ function animate(){
 			animate();
 		} else {
 			done = true;
-			$('#message').fadeTo("slow", 1);
-			console.log('done');
 		}
 	}
     ctx.beginPath();
