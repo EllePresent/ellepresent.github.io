@@ -30,7 +30,7 @@ bam.onload = function(){
 	points = paths[0];
 	animate();
 	swap();
-	//playAudio();
+	playAudio();
 }
 
 //calculates waypoints between vertices
@@ -95,12 +95,13 @@ var forest = {r:34, g: 139, b:34};
 var spring = {r:0, g: 255, b:127};
 var curr0 = {r:0,g:0,b:0};
 var curr1 = {r:25, g: 25, b: 112};	
-var finish = false;
-
+var finish0 = false;
+var finish1 = false;
 var count = 0;
 var deg = 45;
 function backgroundChange0() {
-	if (finish) {
+	console.log('0');
+	if (finish0) {
 		clearInterval(interval0);
 	}
 	var dr0 = forest.r - black.r;
@@ -121,16 +122,18 @@ function backgroundChange0() {
 		//curr1.b = (curr1.b + db1 / 20);
 		deg = Math.max(-45, deg + dd);
 		count++;
+		$('body').css('background', 'linear-gradient(' + deg+ 'deg,' + convertrgb(curr0) + ',' + convertrgb(curr1) + ')');
 	} else {
 		count = 0;
-		finish = true;
+		finish0 = true;
 	}
-	//console.log(deg);
-	$('body').css('background', 'linear-gradient(' + deg+ 'deg,' + convertrgb(curr0) + ',' + convertrgb(curr1) + ')');
+
+	
 }
 
 function backgroundChange1() {
-	if (finish) {
+	console.log('1');
+	if (finish1) {
 		clearInterval(interval1);
 	}
 
@@ -153,7 +156,7 @@ function backgroundChange1() {
 		count++;
 	} else {
 		count = 0;
-		finish = true;
+		finish1 = true;
 	}
 	//console.log(deg);
 	$('body').css('background', 'linear-gradient(' + deg+ 'deg,' + convertrgb(curr0) + ',' + convertrgb(curr1) + ')');
@@ -181,8 +184,7 @@ function swap() {
 		if (typeof interval1 != 'undefined') {
 			clearInterval(interval1);
 			count = 0;
-			finish = false;
-		
+			finish0 = false;
 		} 
 		interval0 = setInterval(backgroundChange0, 100);
 	} else {
@@ -193,19 +195,13 @@ function swap() {
 		ctx.drawImage(b, 0,0, canvas.width, canvas.height);
 		update();
 		
-		if (typeof interval1 != 'undefined') {
-			clearInterval(interval1);
-			count = 0;
-			finish = false;
-		
-		} 
-		interval0 = setInterval(backgroundChange0, 100);
+	
 		
 		if (typeof interval0 != 'undefined') {
-			clearInterval(interval0); count = 0; finish = false;
+			clearInterval(interval0); count = 0; finish1 = false;
 		}
 		interval1 = setInterval(backgroundChange1, 100);
 	}
 	//fade back in
-	$('#bCanvas').fadeTo("slow", 1);
+	$('#bCanvas').fadeTo("slow", 2);
 }
