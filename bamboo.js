@@ -8,11 +8,16 @@ var paths = [];
 var done = false;
 var visible = true;
 //performs action when image is loaded in
-var audio = new Audio('sky.mp3'); 
-audio.loop = true;
+var sky = new Audio('sky.mp3');
+var one = new Audio('one.mp3');
+var songs = [one, sky];
+var songIndex = 0;
+
 function playAudio() { 
-    audio.play(); 
+	songs[songIndex].play();
+	
 } 
+
 
 bam.onload = function(){
     ctx.drawImage(bam,0,0, canvas.width, canvas.height);  
@@ -31,6 +36,13 @@ bam.onload = function(){
 	animate();
 	swap();
 	playAudio();
+	setInterval(function(){
+		if (songs[songIndex].ended) {
+			songIndex = (songIndex + 1) % 2;
+			playAudio();
+		}
+	}, 300)
+	
 }
 
 //calculates waypoints between vertices
